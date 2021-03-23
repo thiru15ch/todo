@@ -1,14 +1,13 @@
 {% extends 'base.html' %}
 
 {% block title %}
-Home
+    Home
 {% endblock title %}
 {% block body %}
 <div class="container-fluid px-0">
     <div class="jumbotron">
         <div class="container">
-            <h1 class="display-4">Manage your day!</h1>
-            <p class="lead">Keep track of what you do v/s what you want to do.</p>
+            <h1 class="display-4">Manage your day!</h1>          
             <hr class="my-4">
             <h3>Fill this form to create a new task.</h3>
             <form method="POST" action="/">
@@ -23,11 +22,7 @@ Home
                     <textarea class="form-control" name="description" id="description" rows="3"
                         placeholder="Describe your task within 200 characters"></textarea>
                 </div>
-                <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" name="isComplete" id="is-complete">
-                    <label class="form-check-label" for="is-complete">Check this box if you have completed this
-                        work.</label>
-                </div>
+                
                 <button type="submit" class="btn btn-primary">Submit!</button>
             </form>
         </div>
@@ -47,14 +42,9 @@ Home
         </thead>
         <tbody>
             {% for i in tasks %}
-            <tr>
-                {% if i.is_done %}
-                <td><strike>{{ i.title }}</strike></td>
-                <td><strike>{{ i.description }}</strike></td>
-                {% else %}
+            <tr>               
                 <td>{{ i.title }}</td>
-                <td>{{ i.description }}</td>
-                {% endif %}
+                <td>{{ i.description }}</td>              
                 
                 <td><a href="{% url 'edit' i.id %}" type="button" class="btn btn-sm btn-primary">Edit</a></td>
                 <td><a href="{% url 'delete' i.id %}" type="button" class="btn btn-sm btn-danger">Delete</a></td>
